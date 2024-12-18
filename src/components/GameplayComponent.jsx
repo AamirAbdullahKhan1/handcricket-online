@@ -17,22 +17,26 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
       const computerMove = Math.floor(Math.random() * 10) + 1;
       setComputerChoice(computerMove);
 
-      if (playerBatting) {
-        const newPlayerScore = playerScore + playerChoice;
-        setPlayerScore(newPlayerScore);
-        if (firstInningsComplete && newPlayerScore >= target) {
-          endGame('player');
+      if (playerChoice === computerMove) {
+        if (!firstInningsComplete) {
+          endFirstInnings();
+        } else {
+          endGame(playerBatting ? 'computer' : 'player');
         }
       } else {
-        const newComputerScore = computerScore + computerMove;
-        setComputerScore(newComputerScore);
-        if (firstInningsComplete && newComputerScore >= target) {
-          endGame('computer');
+        if (playerBatting) {
+          const newPlayerScore = playerScore + playerChoice;
+          setPlayerScore(newPlayerScore);
+          if (firstInningsComplete && newPlayerScore >= target) {
+            endGame('player');
+          }
+        } else {
+          const newComputerScore = computerScore + computerMove;
+          setComputerScore(newComputerScore);
+          if (firstInningsComplete && newComputerScore >= target) {
+            endGame('computer');
+          }
         }
-      }
-
-      if (!firstInningsComplete && (playerChoice === computerMove)) {
-        endFirstInnings();
       }
     }
   }, [playerChoice]);
@@ -102,6 +106,11 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
           <div className="mt-4 text-center bg-gray-200 p-4 rounded-lg animate-fade-in">
             <p className="text-xl">You chose: <span className="font-bold text-blue-600">{playerChoice}</span></p>
             <p className="text-xl">Computer chose: <span className="font-bold text-red-600">{computerChoice}</span></p>
+            {playerChoice === computerChoice && (
+              <p className="text-xl font-bold mt-2 text-red-600">
+                {playerBatting ? "You're out!" : "Computer is out!"}
+              </p>
+            )}
           </div>
         )}
         {showAnimation && (
