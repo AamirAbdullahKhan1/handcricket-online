@@ -2,7 +2,7 @@ import React from 'react';
 
 function HomePage({ onStartGame }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-gradient-to-bl from-[#ffe4e6]  to-[#ccfbf1] text-white">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-[#fefcdb] text-white">
       <h1 className="text-5xl font-bold mb-8 animate-pulse text-slate-800 uppercase tracking-wider">Hand Cricket</h1>
       <p className="text-xl mb-8 text-center text-slate-800 font-medium max-w-md">
         Challenge the computer in an exciting game of Hand Cricket! Test your skills and strategy.
