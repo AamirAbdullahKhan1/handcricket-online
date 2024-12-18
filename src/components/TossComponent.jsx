@@ -31,21 +31,21 @@ function TossComponent({ onTossComplete }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 text-white p-8">
-      <h2 className="text-4xl font-bold mb-8">Toss Time!</h2>
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] bg-[#fefcdb] text-white p-8">
+      <h2 className="text-6xl text-green-500 uppercase font-bold mb-8">Toss Time!</h2>
       {!tossChoice && (
         <div className="flex flex-col items-center space-y-4">
-          <p className="text-xl mb-4">Choose Heads or Tails:</p>
+          <p className="text-2xl mb-4 text-black uppercase">Choose Heads or Tails:</p>
           <div className="flex space-x-4 justify-center">
             <button
               onClick={() => setTossChoice('heads')}
-              className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
+              className="bg-yellow-400 hover:bg-yellow-500 uppercase text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
             >
               Heads
             </button>
             <button
               onClick={() => setTossChoice('tails')}
-              className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
+              className="bg-yellow-400 hover:bg-yellow-500 uppercase text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
             >
               Tails
             </button>
@@ -55,7 +55,7 @@ function TossComponent({ onTossComplete }) {
       {tossChoice && !tossResult && (
         <button
           onClick={handleToss}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full mt-4 animate-bounce transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+          className="bg-green-500 hover:bg-black text-white font-bold py-3 px-6 rounded-full mt-4 animate-bounce transition duration-300 ease-in-out transform hover:scale-105 uppercase "
         >
           Flip Coin
         </button>
@@ -63,26 +63,26 @@ function TossComponent({ onTossComplete }) {
       {loading && (
         <div className="mt-8 flex flex-col items-center">
           <div className="w-16 h-16 border-t-4 border-yellow-400 border-solid rounded-full animate-spin"></div>
-          <p className="mt-4 text-xl">Flipping the coin...</p>
+          <p className="mt-4 text-xl text-black font-medium">Flipping the coin...</p>
         </div>
       )}
       {tossResult && (
         <div className="mt-8 text-center flex flex-col items-center">
-          <p className="text-2xl mb-4">The coin shows: <span className="font-bold">{tossResult}</span></p>
-          <p className="text-3xl font-bold mb-6">{playerWonToss ? "You won the toss!" : "Computer won the toss!"}</p>
+          <p className="text-2xl mb-4 text-black">The coin shows: <span className="font-bold text-black">{tossResult}</span></p>
+          <p className="text-3xl font-bold mb-6 text-black">{playerWonToss ? "You won the toss!" : "Computer won the toss!"}</p>
           {playerWonToss && (
             <div className="space-y-4">
-              <p className="text-xl">What would you like to do?</p>
+              <p className="text-xl text-black">What would you like to do?</p>
               <div className="flex space-x-4 justify-center">
                 <button
                   onClick={() => handleChoice('bat')}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 "
                 >
                   Bat
                 </button>
                 <button
                   onClick={() => handleChoice('bowl')}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-opacity-50"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 "
                 >
                   Bowl
                 </button>
@@ -90,7 +90,7 @@ function TossComponent({ onTossComplete }) {
             </div>
           )}
           {!playerWonToss && (
-            <p className="text-xl animate-pulse">Computer is making its choice...</p>
+            <p className="text-xl animate-pulse text-black">Computer is making its choice...</p>
           )}
         </div>
       )}

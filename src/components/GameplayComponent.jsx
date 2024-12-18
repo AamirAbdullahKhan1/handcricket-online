@@ -67,7 +67,7 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
   };
 
   return (
-    <div className="flex flex-col items-center p-8 bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 min-h-[calc(100vh-64px)]">
+    <div className="flex flex-col items-center p-8 pt-[100px] bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 min-h-[calc(100vh-64px)]">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-blue-600 text-center">
           {playerBatting ? "You're Batting 🏏" : "You're Bowling 🎳"}

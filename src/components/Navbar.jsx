@@ -17,20 +17,20 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 bg-[#fefcdb] ${isScrolled ? 'bg-purple-800 shadow-lg' : 'bg-transparent'}`}>
+    <nav className="fixed w-full z-50 transition-all duration-300 bg-[#fefcdb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="#" className="flex items-center">
               <span className="text-2xl font-bold text-white mr-2">🏏</span>
-              <span className={`text-[27px] text-black uppercase font-extrabold ${isScrolled ? 'text-white' : 'text-white'} transition-colors duration-300`}>
-                Hand Cricket
+              <span className="text-[27px] text-black uppercase font-extrabold">
+                <a href="/">Hand Cricket</a>
               </span>
             </a>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline text-gray-900 font-semibold text-[18px] uppercase space-x-8">
-              <a href="/" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Home</a>
+              <a href="/home" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Home</a>
               <a href="#" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Rules</a>
               <a href="#" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Leaderboard</a>
             </div>
@@ -48,16 +48,6 @@ function Navbar() {
   );
 }
 
-function NavLink({ href, text }) {
-  return (
-    <a
-      href={href}
-      className="text-gray-300 hover:bg-purple-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-    >
-      {text}
-    </a>
-  );
-}
 
 export default Navbar;
 
