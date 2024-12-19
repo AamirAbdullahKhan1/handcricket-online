@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TossComponent from './TossComponent';
 import GameplayComponent from './GameplayComponent';
 
-function GamePage({ onRestartGame }) {
+function GamePage({ onRestartGame, onGameEnd }) {
   const [tossComplete, setTossComplete] = useState(false);
   const [playerBattingFirst, setPlayerBattingFirst] = useState(false);
 
@@ -11,18 +11,16 @@ function GamePage({ onRestartGame }) {
     setPlayerBattingFirst(playerWonToss ? choseToBat : !choseToBat);
   };
 
-  const handleRestartGame = () => {
-    setTossComplete(false);
-    setPlayerBattingFirst(false);
-    onRestartGame();
-  };
-
   return (
     <div className="flex-grow">
       {!tossComplete ? (
         <TossComponent onTossComplete={handleTossComplete} />
       ) : (
-        <GameplayComponent playerBattingFirst={playerBattingFirst} onRestartGame={handleRestartGame} />
+        <GameplayComponent 
+          playerBattingFirst={playerBattingFirst} 
+          onRestartGame={onRestartGame}
+          onGameEnd={onGameEnd}
+        />
       )}
     </div>
   );

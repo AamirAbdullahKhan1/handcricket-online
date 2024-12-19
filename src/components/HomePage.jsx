@@ -14,12 +14,13 @@ function HomePage({ onStartGame, playerWins, computerWins }) {
       </p>
       <button
         onClick={onStartGame}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+        className="bg-blue-500 hover:bg-black text-white font-bold py-3 px-6 rounded-full transition duration-300 hover:scale-105"
       >
         <span className='uppercase text-[19px] tracking-wider font-poppins'>Player</span> vs <span className='uppercase tracking-wider font-poppins text-[19px]'>Computer</span>
       </button>
       <button
         disabled
+        title='Pls wait'
         className="mt-4 font-poppins bg-gray-400 text-white font-bold py-2 px-4 rounded-full opacity-50 cursor-not-allowed"
       >
         Play Online (Coming Soon)

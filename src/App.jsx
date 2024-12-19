@@ -25,11 +25,23 @@ function App() {
     }
   };
 
+  const handleGameEnd = (winner) => {
+    if (winner === 'player') {
+      const newPlayerWins = playerWins + 1;
+      setPlayerWins(newPlayerWins);
+      localStorage.setItem('playerWins', newPlayerWins.toString());
+    } else {
+      const newComputerWins = computerWins + 1;
+      setComputerWins(newComputerWins);
+      localStorage.setItem('computerWins', newComputerWins.toString());
+    }
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
         return gameStarted ? (
-          <GamePage onRestartGame={() => setGameStarted(false)} />
+          <GamePage onRestartGame={() => setGameStarted(false)} onGameEnd={handleGameEnd} />
         ) : (
           <HomePage onStartGame={() => setGameStarted(true)} playerWins={playerWins} computerWins={computerWins} />
         );
@@ -38,7 +50,7 @@ function App() {
       case 'leaderboard':
         return <LeaderboardPage />;
       default:
-        return <HomePage onStartGame={() => setGameStarted(true)} />;
+        return <HomePage onStartGame={() => setGameStarted(true)} playerWins={playerWins} computerWins={computerWins} />;
     }
   };
 

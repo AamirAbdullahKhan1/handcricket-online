@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function GameplayComponent({ playerBattingFirst, onRestartGame }) {
+function GameplayComponent({ playerBattingFirst, onRestartGame, onGameEnd }) {
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [playerChoice, setPlayerChoice] = useState(null);
@@ -12,8 +12,6 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
   const [playerBatting, setPlayerBatting] = useState(playerBattingFirst);
   const [firstInningsComplete, setFirstInningsComplete] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
-  const [playerWins, setPlayerWins] = useState(parseInt(localStorage.getItem('playerWins') || '0'));
-  const [computerWins, setComputerWins] = useState(parseInt(localStorage.getItem('computerWins') || '0'));
 
   useEffect(() => {
     if (playerChoice !== null) {
@@ -61,15 +59,7 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
   const endGame = (winner) => {
     setGameOver(true);
     setWinner(winner);
-    if (winner === 'player') {
-      const newPlayerWins = playerWins + 1;
-      setPlayerWins(newPlayerWins);
-      localStorage.setItem('playerWins', newPlayerWins.toString());
-    } else {
-      const newComputerWins = computerWins + 1;
-      setComputerWins(newComputerWins);
-      localStorage.setItem('computerWins', newComputerWins.toString());
-    }
+    onGameEnd(winner);
   };
 
   const handlePlayerMove = (move) => {
@@ -104,12 +94,10 @@ function GameplayComponent({ playerBattingFirst, onRestartGame }) {
             <div className="text-center">
               <p className="text-lg font-semibold">Player</p>
               <p className="text-3xl font-bold text-blue-500">{playerScore}</p>
-              <p className="text-sm text-gray-600">Wins: {playerWins}</p>
             </div>
             <div className="text-center">
               <p className="text-lg font-semibold">Computer</p>
               <p className="text-3xl font-bold text-red-500">{computerScore}</p>
-              <p className="text-sm text-gray-600">Wins: {computerWins}</p>
             </div>
           </motion.div>
           {target && (
