@@ -192,5 +192,4 @@ function GameplayComponent({ playerBattingFirst, onRestartGame, onGameEnd }) {
   );
 }
 
-export default GameplayComponent;
-
+export default GameplayComponent
