@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Navbar() {
+function Navbar({ onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,22 +17,21 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed w-full z-50 transition-all duration-300 bg-[#fefcdb]">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-purple-800 shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="#" className="flex items-center">
+            <a href="#" onClick={() => onNavigate('home')} className="flex items-center">
               <span className="text-2xl font-bold text-white mr-2">🏏</span>
-              <span className="text-[27px] text-black uppercase font-extrabold">
-                <a href="/">Hand Cricket</a>
+              <span className={`text-2xl font-extrabold ${isScrolled ? 'text-white' : 'text-purple-800'} transition-colors duration-300`}>
+                Hand Cricket
               </span>
             </a>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline text-gray-900 font-semibold text-[18px] uppercase space-x-8">
-              <a href="/home" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Home</a>
-              <a href="#" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Rules</a>
-              <a href="#" className='hover:bg-black hover:text-white transition-all duration-300 px-4 py-[8px] rounded-[18px]'>Leaderboard</a>
+            <div className="ml-10 flex items-baseline space-x-4">
+              <NavLink onClick={() => onNavigate('home')} text="Home" />
+              <NavLink onClick={() => onNavigate('rules')} text="Rules" />
             </div>
           </div>
           <div className="md:hidden">
@@ -48,6 +47,16 @@ function Navbar() {
   );
 }
 
+function NavLink({ onClick, text }) {
+  return (
+    <button
+      onClick={onClick}
+      className="text-gray-300 hover:bg-purple-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
+    >
+      {text}
+    </button>
+  );
+}
 
 export default Navbar;
 
